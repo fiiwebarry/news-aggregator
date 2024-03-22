@@ -10,6 +10,11 @@ const SideBarContext = ({ children }) => {
   const [toggleNav, setToggleNav] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [newsHub, setNewsHub] = useState([])
+  const [searchkeyword, setSearchKeyword] = useState('');
+  const [filterdate, setFilterDate] = useState('');
+  const [filtercategory, setFilterCategory] = useState('');
+  const [filtersource, setFilterSource] = useState('');
+
 
   return (
 
@@ -23,7 +28,14 @@ const SideBarContext = ({ children }) => {
       setIsLoading,
       newsHub,
       setNewsHub,
-
+      searchkeyword,
+      setSearchKeyword,
+      filterdate,
+      setFilterDate,
+      filtersource,
+      setFilterSource,
+      filtercategory,
+      setFilterCategory,
     }}>
       {children}
     </MenuContext.Provider>

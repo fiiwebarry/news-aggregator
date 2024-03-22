@@ -1,4 +1,4 @@
-import Newshub from "./Newshub"
+import Newshub from "/src/components/Newshub"
 import Guardian from "/src/components/Guardian"
 import Newscred from "/src/components/Newscred"
 import { MenuContextProvider } from "../contextApi/SideBarContext"
@@ -16,7 +16,12 @@ const NewsDashboard = () => {
                 }
                 {
                     activeTab === "guardian" && <Guardian />
+
                 }
+                {
+                    activeTab === "newshub" && <Newshub />
+                }
+
 
             </div>
 

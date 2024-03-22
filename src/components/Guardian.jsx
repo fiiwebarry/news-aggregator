@@ -3,10 +3,6 @@ import { MenuContextProvider } from '/src/contextApi/SideBarContext'
 import { useEffect } from 'react'
 
 
-// https://content.guardianapis.com/search?api-key=583de15d-29de-4ff8-89a3-ef7e8f767693
-
-
-
 const Guardian = () => {
     const { isLoading, setIsLoading, newsHub, setNewsHub } = MenuContextProvider()
     useEffect(() => {
@@ -16,9 +12,9 @@ const Guardian = () => {
                 const response = await guardianApi.get("/search?api-key=583de15d-29de-4ff8-89a3-ef7e8f767693");
 
                 if (response.status === 200) {
-                    setNewsHub(response.data);
+                    setNewsHub(response.data.response.results);
 
-                    console.log(response.data);
+                    console.log(newsHub);
                     setIsLoading(false);
 
                 }
@@ -47,23 +43,23 @@ const Guardian = () => {
             {isLoading ? (<div><h2>.........isLoading</h2>
 
 
-            </div>) : (<div>
-                {newsHub && (newsHub.map((data) => {
+            </div>) : (<div className='flex flex-wrap gap-7  '>
+                {newsHub.map((data) => {
                     const { id, type, sectionId, sectionName, webTitle, webUrl } = data;
                     return (
-                        <div key={id}>
-                            <ul>
-                                <li>{type}</li>
-                                <li>{sectionId}</li>
-                                <li>{sectionName}</li>
-                                <li>{webTitle}</li>
-                                <li>{webUrl}</li>
-                            </ul>
+                        <div className='w-[289px] flex  rounded-md flex-row shadow-md bg-[white] text-[black]' key={id}>
+                            <div>
+                                <p>{type}</p>
+                                <p>{sectionId}</p>
+                                <p>{sectionName}</p>
+                                <p>{webTitle}</p>
+                                <p>{webUrl}</p>
+                            </div>
                         </div>
                     );
                 })
 
-                )}
+                }
             </div>
             )}
         </section>
